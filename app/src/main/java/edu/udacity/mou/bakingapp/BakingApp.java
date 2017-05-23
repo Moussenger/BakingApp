@@ -11,6 +11,7 @@ import edu.udacity.mou.bakingapp.bus.managers.ApiManager;
 import edu.udacity.mou.bakingapp.dagger.components.BakingComponent;
 import edu.udacity.mou.bakingapp.dagger.components.DaggerBakingComponent;
 import edu.udacity.mou.bakingapp.dagger.modules.AppModule;
+import edu.udacity.mou.bakingapp.dagger.modules.MVPModule;
 import edu.udacity.mou.bakingapp.dagger.modules.ManagerModule;
 import edu.udacity.mou.bakingapp.dagger.modules.NetworkModule;
 import edu.udacity.mou.bakingapp.dagger.modules.ServiceModule;
@@ -52,6 +53,7 @@ public class BakingApp extends Application {
                 .serviceModule(new ServiceModule())
                 .managerModule(new ManagerModule())
                 .storageModule(new StorageModule())
+                .mVPModule(new MVPModule())
                 .build();
     }
 
