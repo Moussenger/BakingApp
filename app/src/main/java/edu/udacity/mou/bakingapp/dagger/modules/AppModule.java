@@ -1,6 +1,9 @@
 package edu.udacity.mou.bakingapp.dagger.modules;
 
 import android.app.Application;
+import android.app.usage.UsageEvents;
+
+import org.greenrobot.eventbus.EventBus;
 
 import javax.inject.Singleton;
 
@@ -21,7 +24,14 @@ public class AppModule {
 
     @Provides
     @Singleton
-    Application providesApplication() {
+    Application provideApplication() {
         return this.application;
+    }
+
+    @Provides
+    @Singleton
+    EventBus provideEventBus() {
+        EventBus.builder().sendNoSubscriberEvent(false).installDefaultEventBus();
+        return EventBus.getDefault();
     }
 }

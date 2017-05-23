@@ -10,6 +10,7 @@ import javax.inject.Singleton;
 import dagger.Module;
 import dagger.Provides;
 import edu.udacity.mou.bakingapp.BuildConfig;
+import edu.udacity.mou.bakingapp.api.BakingApi;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
@@ -30,7 +31,6 @@ public class NetworkModule {
     @Singleton
     Gson provideGson() {
         GsonBuilder gsonBuilder = new GsonBuilder();
-        gsonBuilder.setFieldNamingPolicy(FieldNamingPolicy.LOWER_CASE_WITH_UNDERSCORES);
         return gsonBuilder.create();
     }
 
@@ -41,5 +41,11 @@ public class NetworkModule {
                 .addConverterFactory(GsonConverterFactory.create(gson))
                 .baseUrl(serverUrl)
                 .build();
+    }
+
+    @Provides
+    @Singleton
+    BakingApi provideBakingApi(Retrofit retrofit) {
+        return retrofit.create(BakingApi.class);
     }
 }

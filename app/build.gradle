@@ -10,15 +10,13 @@ android {
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+
+        buildConfigField "String", "SERVER_URL", "\"https://d17h27t6h515a5.cloudfront.net/topher/2017/May/59121517_baking/\""
+        buildConfigField "String", "PROVIDER_AUTHORITY", "\"edu.udacity.mou.bakingapp.providers.recipes\""
     }
     buildTypes {
 
-        debug {
-            buildConfigField "String", "SERVER_URL", "\"https://d17h27t6h515a5.cloudfront.net/topher/2017/May/59121517_baking/\""
-        }
-
         release {
-            buildConfigField "String", "SERVER_URL", "\"https://d17h27t6h515a5.cloudfront.net/topher/2017/May/59121517_baking/\""
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
@@ -42,4 +40,12 @@ dependencies {
     annotationProcessor 'com.google.dagger:dagger-android-processor:2.10'
     compile 'com.squareup.retrofit2:converter-gson:2.3.0'
     compile 'com.google.dagger:dagger-android-support:2.10'
+    provided 'org.projectlombok:lombok:1.12.6'
+    annotationProcessor "org.projectlombok:lombok:1.12.6"
+    compile 'com.jakewharton:butterknife:8.6.0'
+    annotationProcessor 'com.jakewharton:butterknife-compiler:8.6.0'
+    compile 'com.jakewharton.timber:timber:4.5.1'
+    compile 'org.greenrobot:eventbus:3.0.0'
+    annotationProcessor 'net.simonvt.schematic:schematic-compiler:0.7.0'
+    compile 'net.simonvt.schematic:schematic:0.7.0'
 }
