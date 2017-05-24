@@ -16,6 +16,7 @@ import edu.udacity.mou.bakingapp.dagger.modules.ManagerModule;
 import edu.udacity.mou.bakingapp.dagger.modules.NetworkModule;
 import edu.udacity.mou.bakingapp.dagger.modules.ServiceModule;
 import edu.udacity.mou.bakingapp.dagger.modules.StorageModule;
+import edu.udacity.mou.bakingapp.dagger.modules.UIModule;
 import timber.log.Timber;
 
 /**
@@ -54,6 +55,7 @@ public class BakingApp extends Application {
                 .managerModule(new ManagerModule())
                 .storageModule(new StorageModule())
                 .mVPModule(new MVPModule())
+                .uIModule(new UIModule())
                 .build();
     }
 

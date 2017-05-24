@@ -3,17 +3,15 @@ package edu.udacity.mou.bakingapp.dagger.modules;
 import android.app.Application;
 import android.net.Uri;
 
-import org.greenrobot.eventbus.EventBus;
-
 import javax.inject.Named;
 import javax.inject.Singleton;
 
 import dagger.Module;
 import dagger.Provides;
-import edu.udacity.mou.bakingapp.api.BakingApi;
-import edu.udacity.mou.bakingapp.services.api.ApiService;
-import edu.udacity.mou.bakingapp.services.api.ApiServiceImpl;
-import edu.udacity.mou.bakingapp.services.api.callbacks.GetRecipesCallback;
+import edu.udacity.mou.bakingapp.model.Ingredient;
+import edu.udacity.mou.bakingapp.model.Recipe;
+import edu.udacity.mou.bakingapp.model.Step;
+import edu.udacity.mou.bakingapp.storage.StorageModel;
 import edu.udacity.mou.bakingapp.storage.recipes.RecipesProvider;
 import edu.udacity.mou.bakingapp.storage.storage_models.IngredientsStorageModel;
 import edu.udacity.mou.bakingapp.storage.storage_models.RecipeStorageModel;
@@ -46,19 +44,19 @@ public class StorageModule {
 
     @Provides
     @Singleton
-    RecipeStorageModel provideRecipeStorageModel(Application application, @Named("recipe_uri") Uri uri) {
+    StorageModel<Recipe> provideRecipeStorageModel(Application application, @Named("recipe_uri") Uri uri) {
         return new RecipeStorageModel(application.getApplicationContext(), uri);
     }
 
     @Provides
     @Singleton
-    IngredientsStorageModel provideIngredientStorageModel(Application application, @Named("ingredient_uri") Uri uri) {
+    StorageModel<Ingredient> provideIngredientStorageModel(Application application, @Named("ingredient_uri") Uri uri) {
         return new IngredientsStorageModel(application.getApplicationContext(), uri);
     }
 
     @Provides
     @Singleton
-    StepStorageModel provideStepStorageModel(Application application,  @Named("step_uri") Uri uri) {
+    StorageModel<Step> provideStepStorageModel(Application application, @Named("step_uri") Uri uri) {
         return new StepStorageModel(application.getApplicationContext(), uri);
     }
 }

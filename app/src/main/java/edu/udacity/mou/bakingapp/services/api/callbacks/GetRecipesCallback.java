@@ -7,12 +7,11 @@ import org.greenrobot.eventbus.EventBus;
 import java.util.ArrayList;
 import java.util.List;
 
+import edu.udacity.mou.bakingapp.bus.events.RecipesGotEvent;
 import edu.udacity.mou.bakingapp.model.Ingredient;
 import edu.udacity.mou.bakingapp.model.Recipe;
 import edu.udacity.mou.bakingapp.model.Step;
-import edu.udacity.mou.bakingapp.storage.storage_models.IngredientsStorageModel;
-import edu.udacity.mou.bakingapp.storage.storage_models.RecipeStorageModel;
-import edu.udacity.mou.bakingapp.storage.storage_models.StepStorageModel;
+import edu.udacity.mou.bakingapp.storage.StorageModel;
 
 /**
  * Created by mou on 23/05/17.
@@ -20,14 +19,14 @@ import edu.udacity.mou.bakingapp.storage.storage_models.StepStorageModel;
 
 public class GetRecipesCallback extends ApiServiceCallback<List<Recipe>> {
 
-    private RecipeStorageModel recipeStorageModel;
-    private IngredientsStorageModel ingredientsStorageModel;
-    private StepStorageModel stepStorageModel;
+    private StorageModel<Recipe>  recipeStorageModel;
+    private StorageModel<Ingredient> ingredientsStorageModel;
+    private StorageModel<Step> stepStorageModel;
 
     public GetRecipesCallback(Context context, EventBus bus,
-                              RecipeStorageModel recipeStorageModel,
-                              IngredientsStorageModel ingredientsStorageModel,
-                              StepStorageModel stepStorageModel) {
+                              StorageModel<Recipe> recipeStorageModel,
+                              StorageModel<Ingredient> ingredientsStorageModel,
+                              StorageModel<Step> stepStorageModel) {
         super(context, bus);
 
         this.recipeStorageModel = recipeStorageModel;
@@ -54,11 +53,12 @@ public class GetRecipesCallback extends ApiServiceCallback<List<Recipe>> {
         }
 
         saveAll(recipes, ingredients, steps);
+        notify(true);
     }
 
     @Override
     public void error(Throwable t) {
-
+        notify(false);
     }
 
     private void deleteAll() {
@@ -83,5 +83,9 @@ public class GetRecipesCallback extends ApiServiceCallback<List<Recipe>> {
         for (Step step : steps) {
             step.setRecipe(recipe);
         }
+    }
+
+    private void notify(boolean success) {
+        getBus().post(RecipesGotEvent.builder().success(success).build());
     }
 }

@@ -1,4 +1,4 @@
-package edu.udacity.mou.bakingapp.ui;
+package edu.udacity.mou.bakingapp.ui.activitys;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -9,9 +9,10 @@ import javax.inject.Inject;
 
 import butterknife.ButterKnife;
 import edu.udacity.mou.bakingapp.BakingApp;
-import edu.udacity.mou.bakingapp.BasePresenter;
-import edu.udacity.mou.bakingapp.BaseView;
+import edu.udacity.mou.bakingapp.ui.BasePresenter;
+import edu.udacity.mou.bakingapp.ui.BaseView;
 import edu.udacity.mou.bakingapp.dagger.components.BakingComponent;
+import icepick.Icepick;
 
 /**
  * Created by mou on 22/05/17.
@@ -27,31 +28,19 @@ public abstract class BakingAppActivity extends AppCompatActivity implements Bas
         super.onCreate(savedInstanceState);
         inject();
         ButterKnife.bind(this);
+        Icepick.restoreInstanceState(this, savedInstanceState);
         this.presenter = configPresenter();
     }
 
-    @Override
-    protected void onStart() {
-        super.onStart();
-        presenter.start();
+    @Override public void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        Icepick.saveInstanceState(this, outState);
     }
 
     @Override
-    protected void onStop() {
-        super.onStop();
-        presenter.stop();
-    }
-
-    @Override
-    protected void onPause() {
-        super.onPause();
-        presenter.pause();
-    }
-
-    @Override
-    protected void onResume() {
-        super.onResume();
-        presenter.resume();
+    protected void onDestroy() {
+        super.onDestroy();
+        presenter = null;
     }
 
     protected BakingApp getBakingApp() {

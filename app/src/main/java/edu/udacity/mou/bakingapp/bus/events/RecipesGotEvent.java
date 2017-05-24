@@ -1,5 +1,6 @@
 package edu.udacity.mou.bakingapp.bus.events;
 
+import lombok.Data;
 import lombok.experimental.Builder;
 
 /**
@@ -7,5 +8,7 @@ import lombok.experimental.Builder;
  */
 
 @Builder
-public class GetRecipesEvent {
+@Data
+public class RecipesGotEvent {
+    private boolean success;
 }

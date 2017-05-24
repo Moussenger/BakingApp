@@ -10,7 +10,9 @@ import edu.udacity.mou.bakingapp.dagger.modules.ManagerModule;
 import edu.udacity.mou.bakingapp.dagger.modules.NetworkModule;
 import edu.udacity.mou.bakingapp.dagger.modules.ServiceModule;
 import edu.udacity.mou.bakingapp.dagger.modules.StorageModule;
-import edu.udacity.mou.bakingapp.ui.main.MainActivity;
+import edu.udacity.mou.bakingapp.dagger.modules.UIModule;
+import edu.udacity.mou.bakingapp.ui.activitys.main.MainActivity;
+import edu.udacity.mou.bakingapp.ui.fragments.recipes.RecipesFragment;
 
 /**
  * Created by mou on 22/05/17.
@@ -18,9 +20,11 @@ import edu.udacity.mou.bakingapp.ui.main.MainActivity;
 
 @Singleton
 @Component(modules={AppModule.class, NetworkModule.class, ServiceModule.class,
-        ManagerModule.class, StorageModule.class, MVPModule.class})
+        ManagerModule.class, StorageModule.class, MVPModule.class, UIModule.class})
 public interface BakingComponent {
     void inject(BakingApp application);
 
     void inject(MainActivity activity);
+
+    void inject(RecipesFragment fragment);
 }

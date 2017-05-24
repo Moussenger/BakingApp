@@ -1,8 +1,11 @@
-package edu.udacity.mou.bakingapp.ui.main;
+package edu.udacity.mou.bakingapp.ui.activitys.main;
 
 import android.content.Context;
 
 import org.greenrobot.eventbus.EventBus;
+
+import edu.udacity.mou.bakingapp.model.Recipe;
+import timber.log.Timber;
 
 /**
  * Created by mou on 23/05/17.
@@ -19,23 +22,8 @@ public class MainPresenter implements MainContract.Presenter {
     }
 
     @Override
-    public void start() {
-
-    }
-
-    @Override
-    public void stop() {
-
-    }
-
-    @Override
-    public void resume() {
-
-    }
-
-    @Override
-    public void pause() {
-
+    public void onRecipeClick(Recipe recipe) {
+        Timber.d(recipe.toString());
     }
 
     @Override

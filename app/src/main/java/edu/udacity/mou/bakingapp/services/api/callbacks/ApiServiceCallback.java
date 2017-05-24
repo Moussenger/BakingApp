@@ -53,6 +53,14 @@ public abstract class ApiServiceCallback<T> implements Callback<T> {
         error(e);
     }
 
+    public Context getContext() {
+        return context;
+    }
+
+    public EventBus getBus() {
+        return bus;
+    }
+
     public abstract void success(T response);
     public abstract void error(Throwable t);
 }
