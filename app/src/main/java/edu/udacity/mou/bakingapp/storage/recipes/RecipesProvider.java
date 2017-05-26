@@ -26,8 +26,8 @@ interface Path {
     String INGREDIENTS = "ingredients";
     String STEPS = "steps";
 
-    String INGREDIENTS_FROM_RECIPE = INGREDIENTS + "/fromRecipe" + INEXACT;
-    String STEPS_FROM_RECIPE = STEPS + "/fromRecipe" + INEXACT;
+    String INGREDIENTS_FROM_RECIPE = INGREDIENTS + "fromRecipe";
+    String STEPS_FROM_RECIPE = STEPS + "fromRecipe";
 }
 
 interface Types {
@@ -74,11 +74,11 @@ public class RecipesProvider {
 
         @InexactContentUri(
                 name = Name.INGREDIENTS_FROM_RECIPE,
-                path = Path.INGREDIENTS_FROM_RECIPE,
+                path = Path.INGREDIENTS_FROM_RECIPE + Path.INEXACT,
                 type = Types.INGREDIENTS_DIR,
                 whereColumn = IngredientColumns.RECIPE_ID,
-                pathSegment = 2)
-        public static Uri withId(long id) {
+                pathSegment = 1)
+        public static Uri fromRecipeWithId(long id) {
             return buildUri(Path.INGREDIENTS_FROM_RECIPE, String.valueOf(id));
         }
     }
@@ -94,11 +94,11 @@ public class RecipesProvider {
 
         @InexactContentUri(
                 name = Name.STEPS_FROM_RECIPE,
-                path = Path.STEPS_FROM_RECIPE,
+                path = Path.STEPS_FROM_RECIPE + Path.INEXACT,
                 type = Types.STEPS_DIR,
                 whereColumn = StepColumns.RECIPE_ID,
-                pathSegment = 2)
-        public static Uri withId(long id) {
+                pathSegment = 1)
+        public static Uri fromRecipeWithId(long id) {
             return buildUri(Path.STEPS_FROM_RECIPE, String.valueOf(id));
         }
     }

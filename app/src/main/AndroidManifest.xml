@@ -19,7 +19,13 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        
+
+        <activity android:name=".ui.activitys.steps.StepsActivity"
+            android:parentActivityName=".ui.activitys.main.MainActivity"/>
+
+        <activity android:name=".ui.activitys.step.StepActivity"
+            android:parentActivityName=".ui.activitys.steps.StepsActivity"/>
+
         <provider
             android:authorities="edu.udacity.mou.bakingapp.providers.recipes"
             android:name=".storage.recipes.generated.RecipesProvider"/>

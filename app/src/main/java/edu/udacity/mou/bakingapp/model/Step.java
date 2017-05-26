@@ -2,7 +2,12 @@ package edu.udacity.mou.bakingapp.model;
 
 import com.google.gson.annotations.SerializedName;
 
+import org.parceler.Parcel;
+
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
+import lombok.RequiredArgsConstructor;
 import lombok.experimental.Builder;
 
 /**
@@ -11,13 +16,18 @@ import lombok.experimental.Builder;
 
 @Data
 @Builder
+@Parcel
+@AllArgsConstructor(suppressConstructorProperties=true)
 public class Step {
     @SerializedName("id")
-    private int position;
-    private String shortDescription;
-    private String description;
-    private String videoURL;
-    private String thumbnailURL;
-    private Recipe recipe;
+    int position;
+    String shortDescription;
+    String description;
+    String videoURL;
+    String thumbnailURL;
+    Recipe recipe;
 
+    public Step() {
+
+    }
 }

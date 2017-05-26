@@ -3,4 +3,10 @@
     <string name="empty_list">No data</string>
     <string name="servings">(%1$d servings)</string>
     <string name="recipes_error_warning">Error loading data. Data is loaded from cache and may not be updated</string>
+    <string name="ingredients">Ingredients</string>
+    <string name="ingredients_item">%1$s %2$s %3$s\n</string>
+    <string name="close">close</string>
+    <string name="user_agent">BakingApp</string>
+    <string name="next_button"><![CDATA[Next >]]></string>
+    <string name="previous_button"><![CDATA[< Previous]]></string>
 </resources>

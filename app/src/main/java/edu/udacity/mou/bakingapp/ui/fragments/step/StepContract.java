@@ -1,6 +1,5 @@
-package edu.udacity.mou.bakingapp.ui.activitys.main;
+package edu.udacity.mou.bakingapp.ui.fragments.step;
 
-import edu.udacity.mou.bakingapp.model.Recipe;
 import edu.udacity.mou.bakingapp.ui.BasePresenter;
 import edu.udacity.mou.bakingapp.ui.BaseView;
 
@@ -8,12 +7,11 @@ import edu.udacity.mou.bakingapp.ui.BaseView;
  * Created by mou on 23/05/17.
  */
 
-public interface MainContract {
+public interface StepContract {
     interface View extends BaseView {
-        void goToStepActivity(Recipe recipe);
     }
 
     interface Presenter extends BasePresenter<View> {
-        void onRecipeClick(Recipe recipe);
+
     }
 }

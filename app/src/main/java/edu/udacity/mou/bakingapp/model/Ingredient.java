@@ -1,5 +1,8 @@
 package edu.udacity.mou.bakingapp.model;
 
+import org.parceler.Parcel;
+
+import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.experimental.Builder;
 
@@ -9,9 +12,15 @@ import lombok.experimental.Builder;
 
 @Data
 @Builder
+@AllArgsConstructor(suppressConstructorProperties=true)
+@Parcel
 public class Ingredient {
-    private float quantity;
-    private String measure;
-    private String ingredient;
-    private Recipe recipe;
+    float quantity;
+    String measure;
+    String ingredient;
+    Recipe recipe;
+
+    public Ingredient() {
+
+    }
 }

@@ -1,7 +1,10 @@
 package edu.udacity.mou.bakingapp.model;
 
+import org.parceler.Parcel;
+
 import java.util.List;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.experimental.Builder;
 
@@ -11,11 +14,17 @@ import lombok.experimental.Builder;
 
 @Data
 @Builder
+@AllArgsConstructor(suppressConstructorProperties=true)
+@Parcel
 public class Recipe {
-    private int id;
-    private int servings;
-    private String name;
-    private String image;
-    private List<Ingredient> ingredients;
-    private List<Step> steps;
+    int id;
+    int servings;
+    String name;
+    String image;
+    List<Ingredient> ingredients;
+    List<Step> steps;
+
+    public Recipe() {
+
+    }
 }
