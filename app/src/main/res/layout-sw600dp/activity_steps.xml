@@ -18,6 +18,15 @@
         android:id="@+id/step_fragment"
         android:layout_width="0dp"
         android:layout_height="match_parent"
-        android:layout_weight="2"/>
+        android:layout_weight="2">
+
+        <TextView
+            android:id="@+id/step_warning"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="@string/select_step_warning"
+            android:gravity="center"/>
+
+    </FrameLayout>
 
 </LinearLayout>

@@ -16,6 +16,7 @@ import edu.udacity.mou.bakingapp.model.Recipe;
 import edu.udacity.mou.bakingapp.storage.StorageModel;
 import edu.udacity.mou.bakingapp.storage.recipes.RecipesProvider;
 import edu.udacity.mou.bakingapp.utils.ViewUtils;
+import timber.log.Timber;
 
 /**
  * Created by mou on 26/05/17.

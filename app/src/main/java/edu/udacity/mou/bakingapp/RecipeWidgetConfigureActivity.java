@@ -15,6 +15,7 @@ import edu.udacity.mou.bakingapp.storage.widgets.WidgetDataStorage;
 import edu.udacity.mou.bakingapp.ui.BasePresenter;
 import edu.udacity.mou.bakingapp.ui.activitys.BakingAppActivity;
 import edu.udacity.mou.bakingapp.ui.fragments.recipes.RecipesFragment;
+import timber.log.Timber;
 
 public class RecipeWidgetConfigureActivity extends BakingAppActivity implements RecipesFragment.OnRecipeClickListener {
     @Inject WidgetDataStorage widgetDataStorage;

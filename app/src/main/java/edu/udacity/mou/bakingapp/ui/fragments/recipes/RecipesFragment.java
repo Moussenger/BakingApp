@@ -1,6 +1,10 @@
 package edu.udacity.mou.bakingapp.ui.fragments.recipes;
 
 import android.database.Cursor;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import android.support.annotation.VisibleForTesting;
+import android.support.test.espresso.IdlingResource;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.GridLayoutManager;
@@ -13,6 +17,7 @@ import butterknife.BindView;
 import edu.udacity.mou.bakingapp.R;
 import edu.udacity.mou.bakingapp.model.Recipe;
 import edu.udacity.mou.bakingapp.ui.BasePresenter;
+import edu.udacity.mou.bakingapp.ui.SimpleIdlingResource;
 import edu.udacity.mou.bakingapp.ui.adapters.RecipeAdapter;
 import edu.udacity.mou.bakingapp.ui.adapters.holders.RecipeViewHolder;
 import edu.udacity.mou.bakingapp.ui.fragments.BakingAppFragment;
@@ -37,6 +42,7 @@ public class RecipesFragment extends BakingAppFragment implements RecipesContrac
     @State protected boolean refreshing;
     @State protected boolean firstLaunch = true;
 
+    @Nullable private SimpleIdlingResource idlingResource;
     private OnRecipeClickListener onRecipeClickListener;
 
     public void setOnRecipeClickListener(OnRecipeClickListener listener) {
@@ -81,6 +87,7 @@ public class RecipesFragment extends BakingAppFragment implements RecipesContrac
     public void enableRefreshing(boolean refreshing) {
         swipeRefreshLayout.setRefreshing(refreshing);
         this.refreshing = refreshing;
+        setIdlingResourceValue(refreshing);
     }
 
     @Override
@@ -115,6 +122,16 @@ public class RecipesFragment extends BakingAppFragment implements RecipesContrac
     protected void configSwipe () {
         swipeRefreshLayout.setOnRefreshListener(this);
         enableRefreshing(refreshing);
+    }
+
+    public void setIdlingResource(SimpleIdlingResource idlingResource) {
+        this.idlingResource = idlingResource;
+    }
+
+    private void setIdlingResourceValue(boolean value) {
+        if(idlingResource != null) {
+            idlingResource.setIdleState(value);
+        }
     }
 
     @Override

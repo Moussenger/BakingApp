@@ -3,7 +3,9 @@ package edu.udacity.mou.bakingapp.ui.activitys.steps;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import org.parceler.Parcels;
 
@@ -35,6 +37,8 @@ public class StepsActivity extends BakingAppActivity implements StepsContract.Vi
 
     @Nullable @BindView(R.id.step_fragment) ViewGroup stepLayout;
 
+    @Nullable @BindView(R.id.step_warning) protected TextView stepWarningTextView;
+
     StepsFragment stepsFragment;
 
     @Override
@@ -46,7 +50,7 @@ public class StepsActivity extends BakingAppActivity implements StepsContract.Vi
         stepsFragment = (StepsFragment) getSupportFragmentManager().findFragmentById(R.id.recipes_steps);
         stepsFragment.setOnStepClickListener(this);
 
-        if(steps != null) {
+        if(steps != null && isTablet()) {
             loadStepFragment(steps, position);
         }
     }
@@ -84,6 +88,7 @@ public class StepsActivity extends BakingAppActivity implements StepsContract.Vi
 
     private void loadStepFragment(List<Step> steps, int position) {
         ViewUtils.replaceStepFragment(getSupportFragmentManager(), R.id.step_fragment, steps, position, this);
+        stepWarningTextView.setVisibility(View.GONE);
     }
 
     private void goToStepActivity(List<Step> steps, int position) {

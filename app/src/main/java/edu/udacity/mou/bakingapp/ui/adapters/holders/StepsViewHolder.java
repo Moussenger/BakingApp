@@ -8,6 +8,7 @@ import android.widget.TextView;
 
 import java.util.List;
 
+import butterknife.BindColor;
 import butterknife.BindView;
 import edu.udacity.mou.bakingapp.R;
 import edu.udacity.mou.bakingapp.model.Step;
@@ -20,6 +21,8 @@ import edu.udacity.mou.bakingapp.storage.StorageModel;
 public class StepsViewHolder extends BaseViewHolder {
     @BindView(R.id.item_steps_layout) protected ViewGroup stepRow;
     @BindView(R.id.item_steps_short_description) protected TextView stepShortDescription;
+
+    @BindColor(R.color.colorSelected) int selectedColor;
 
     private StorageModel<Step> storageModel;
     private OnStepClickListener stepClickListener;
@@ -48,7 +51,7 @@ public class StepsViewHolder extends BaseViewHolder {
     }
 
     public void setSelected() {
-        stepRow.setBackgroundColor(Color.BLUE);
+        stepRow.setBackgroundColor(selectedColor);
     }
 
     public interface OnStepClickListener {

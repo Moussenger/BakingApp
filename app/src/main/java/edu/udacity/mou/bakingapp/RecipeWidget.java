@@ -1,19 +1,14 @@
 package edu.udacity.mou.bakingapp;
 
-import android.app.PendingIntent;
 import android.appwidget.AppWidgetManager;
 import android.appwidget.AppWidgetProvider;
 import android.content.Context;
 import android.content.Intent;
 import android.widget.RemoteViews;
 
-import javax.inject.Inject;
-
 import edu.udacity.mou.bakingapp.storage.widgets.WidgetDataPreferencesStorage;
 import edu.udacity.mou.bakingapp.storage.widgets.WidgetDataStorage;
-import edu.udacity.mou.bakingapp.ui.activitys.step.StepActivity;
-import edu.udacity.mou.bakingapp.ui.activitys.steps.StepsActivity;
-import edu.udacity.mou.bakingapp.ui.fragments.steps.StepsFragment;
+import timber.log.Timber;
 
 public class RecipeWidget extends AppWidgetProvider {
 
@@ -33,7 +28,6 @@ public class RecipeWidget extends AppWidgetProvider {
 
     static void configWidgetViews(Context context, RemoteViews views, String recipeName, int recipeId) {
         views.setTextViewText(R.id.appwidget_title, recipeName);
-
         Intent intent = new Intent(context, ListWidgetService.class);
         intent.putExtra(ListWidgetService.RECIPE_KEY, recipeId);
         views.setRemoteAdapter(R.id.appwidget_steps, intent);
