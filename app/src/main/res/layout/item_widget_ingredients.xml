@@ -17,6 +17,7 @@
         android:layout_height="wrap_content"
         android:gravity="center_vertical"
         android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+        android:textColor="@color/textDarkPrimary"
         tools:text="1 CUP Salt"/>
 
 </LinearLayout>

@@ -32,6 +32,7 @@ import edu.udacity.mou.bakingapp.model.Step;
 import edu.udacity.mou.bakingapp.ui.BasePresenter;
 import edu.udacity.mou.bakingapp.ui.fragments.BakingAppFragment;
 import edu.udacity.mou.bakingapp.utils.StringUtils;
+import icepick.State;
 
 /**
  * Created by mou on 25/05/17.
@@ -49,6 +50,8 @@ public class StepFragment extends BakingAppFragment implements StepContract.View
     @BindView(R.id.fragment_step_player) protected SimpleExoPlayerView playerView;
     @Nullable @BindView(R.id.fragment_step_next_button) protected Button nextButton;
     @Nullable @BindView(R.id.fragment_step_previous_button) protected Button previousButton;
+
+    @State protected boolean stopped = false;
     
     private Step step;
     private int position;
@@ -99,7 +102,22 @@ public class StepFragment extends BakingAppFragment implements StepContract.View
     @Override
     public void onDestroy() {
         super.onDestroy();
+    }
+
+    @Override
+    public void onStop() {
+        super.onStop();
         releasePlayer();
+        stopped = true;
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+        if(stopped) {
+            stopped = false;
+            configPlayer();
+        }
     }
 
     @Override
