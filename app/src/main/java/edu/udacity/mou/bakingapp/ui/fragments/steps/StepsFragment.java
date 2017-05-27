@@ -23,7 +23,6 @@ import edu.udacity.mou.bakingapp.ui.adapters.holders.StepsViewHolder;
 import edu.udacity.mou.bakingapp.ui.fragments.BakingAppFragment;
 import edu.udacity.mou.bakingapp.ui.fragments.ingredients.IngredientsDialog;
 import edu.udacity.mou.bakingapp.views.EmptyRecyclerView;
-import icepick.State;
 
 /**
  * Created by mou on 23/05/17.

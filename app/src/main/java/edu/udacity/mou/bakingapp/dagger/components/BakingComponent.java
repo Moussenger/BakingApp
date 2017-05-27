@@ -4,6 +4,9 @@ import javax.inject.Singleton;
 
 import dagger.Component;
 import edu.udacity.mou.bakingapp.BakingApp;
+import edu.udacity.mou.bakingapp.ListWidgetService;
+import edu.udacity.mou.bakingapp.RecipeWidget;
+import edu.udacity.mou.bakingapp.RecipeWidgetConfigureActivity;
 import edu.udacity.mou.bakingapp.dagger.modules.AppModule;
 import edu.udacity.mou.bakingapp.dagger.modules.MVPModule;
 import edu.udacity.mou.bakingapp.dagger.modules.ManagerModule;
@@ -31,8 +34,11 @@ public interface BakingComponent {
     void inject(MainActivity activity);
     void inject(StepsActivity activity);
     void inject(StepActivity activity);
+    void inject(RecipeWidgetConfigureActivity activity);
 
     void inject(RecipesFragment fragment);
     void inject(StepsFragment fragment);
     void inject(StepFragment fragment);
+
+    void inject(ListWidgetService service);
 }

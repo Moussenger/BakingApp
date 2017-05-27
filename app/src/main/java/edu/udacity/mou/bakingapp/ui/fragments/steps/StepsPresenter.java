@@ -17,6 +17,7 @@ import edu.udacity.mou.bakingapp.model.Recipe;
 import edu.udacity.mou.bakingapp.model.Step;
 import edu.udacity.mou.bakingapp.storage.StorageModel;
 import edu.udacity.mou.bakingapp.storage.recipes.RecipesProvider;
+import edu.udacity.mou.bakingapp.utils.ViewUtils;
 import timber.log.Timber;
 
 /**
@@ -87,12 +88,7 @@ public class StepsPresenter implements StepsContract.Presenter, LoaderManager.Lo
         String format = context.getString(R.string.ingredients_item);
 
         for (Ingredient ingredient : ingredients) {
-            String item = String.format(format,
-                    ingredient.getQuantity(),
-                    ingredient.getMeasure(),
-                    ingredient.getIngredient());
-
-            builder.append(item);
+            builder.append(ViewUtils.getIngredientString(context, ingredient));
         }
         
         return builder.toString();

@@ -9,4 +9,7 @@
     <string name="user_agent">BakingApp</string>
     <string name="next_button"><![CDATA[Next >]]></string>
     <string name="previous_button"><![CDATA[< Previous]]></string>
+    <string name="appwidget_text">EXAMPLE</string>
+    <string name="configure">Configure</string>
+    <string name="add_widget">Add widget</string>
 </resources>

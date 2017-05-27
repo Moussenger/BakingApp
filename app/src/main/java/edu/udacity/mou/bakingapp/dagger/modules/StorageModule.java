@@ -16,6 +16,8 @@ import edu.udacity.mou.bakingapp.storage.recipes.RecipesProvider;
 import edu.udacity.mou.bakingapp.storage.storage_models.IngredientsStorageModel;
 import edu.udacity.mou.bakingapp.storage.storage_models.RecipeStorageModel;
 import edu.udacity.mou.bakingapp.storage.storage_models.StepStorageModel;
+import edu.udacity.mou.bakingapp.storage.widgets.WidgetDataPreferencesStorage;
+import edu.udacity.mou.bakingapp.storage.widgets.WidgetDataStorage;
 
 /**
  * Created by mou on 22/05/17.
@@ -58,5 +60,11 @@ public class StorageModule {
     @Singleton
     StorageModel<Step> provideStepStorageModel(Application application, @Named("step_uri") Uri uri) {
         return new StepStorageModel(application.getApplicationContext(), uri);
+    }
+
+    @Provides
+    @Singleton
+    WidgetDataStorage provideWidgetDataStorage(Application application) {
+        return new WidgetDataPreferencesStorage(application.getApplicationContext());
     }
 }

@@ -15,6 +15,7 @@ import static edu.udacity.mou.bakingapp.storage.recipes.ProviderUtils.buildUri;
  * Created by mou on 23/05/17.
  */
 interface Name {
+    String RECIPE_FROM_ID = "RECIPE_FROM_ID";
     String INGREDIENTS_FROM_RECIPE = "INGREDIENTS_FROM_RECIPE";
     String STEPS_FROM_RECIPE = "STEPS_FROM_RECIPE";
 }
@@ -61,6 +62,16 @@ public class RecipesProvider {
                 defaultSort = Sort.RECIPES
         )
         public static Uri CONTENT_URI = buildUri(Path.RECIPES);
+
+        @InexactContentUri(
+                name = Name.RECIPE_FROM_ID,
+                path = Path.RECIPES + Path.INEXACT,
+                type = Types.RECIPES_DIR,
+                whereColumn = RecipeColumns.ID,
+                pathSegment = 1)
+        public static Uri withId(long id) {
+            return buildUri(Path.RECIPES, String.valueOf(id));
+        }
     }
 
     @TableEndpoint(table = RecipesDatabase.INGREDIENTS)
